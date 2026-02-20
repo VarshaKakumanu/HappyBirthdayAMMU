@@ -1013,6 +1013,172 @@
         color: rgba(255, 249, 240, 0.6);
       }
 
+      /* WORLD MAP */
+      .mapwrap {
+        position: relative;
+        margin-bottom: 2.5rem;
+        border-radius: 20px;
+        overflow: visible;
+        background: linear-gradient(135deg, rgba(26,8,40,0.9), rgba(45,18,70,0.6));
+        border: 1px solid rgba(114,239,221,0.15);
+        box-shadow: 0 0 60px rgba(114,239,221,0.05), inset 0 0 40px rgba(0,0,0,0.3);
+        padding: 1rem;
+      }
+      #worldmap {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 14px;
+      }
+      #arc {
+        animation: arcDash 1.5s linear infinite;
+      }
+      @keyframes arcDash {
+        to { stroke-dashoffset: -26; }
+      }
+      .map-caption {
+        text-align: center;
+        font-size: 0.72rem;
+        color: rgba(255,249,240,0.35);
+        letter-spacing: 0.1rem;
+        padding: 0.5rem 0 0;
+        text-transform: uppercase;
+      }
+
+      /* POPOVERS */
+      .mpopover {
+        position: absolute;
+        top: 38%;
+        left: 4%;
+        z-index: 100;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        animation: popoverIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+      }
+      .mpopover.right {
+        left: auto;
+        right: 4%;
+        align-items: flex-end;
+      }
+      .mpopover.open {
+        display: flex;
+      }
+      @keyframes popoverIn {
+        from { opacity:0; transform: scale(0.8) translateY(10px); }
+        to   { opacity:1; transform: scale(1) translateY(0); }
+      }
+      .mpop-phone {
+        background: linear-gradient(160deg, #1e0a2e, #2d1246);
+        border: 1px solid rgba(244,164,191,0.3);
+        border-radius: 22px;
+        width: 190px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(240,98,146,0.15);
+      }
+      .mpop-screen {
+        background: linear-gradient(160deg, #0d0118, #1a0828);
+        margin: 6px;
+        border-radius: 16px;
+        padding: 1rem 0.9rem 0.8rem;
+        min-height: 180px;
+      }
+      .mpop-call-ui {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .mpop-avatar {
+        font-size: 2.2rem;
+        filter: drop-shadow(0 0 10px rgba(240,98,146,0.5));
+      }
+      .mpop-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        color: var(--cream);
+        font-weight: 700;
+      }
+      .mpop-status {
+        font-size: 0.62rem;
+        color: var(--alien);
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+      }
+      .mpop-status.calling {
+        color: var(--gold);
+        animation: blink 1s ease-in-out infinite;
+      }
+      @keyframes blink {
+        0%,100%{opacity:1} 50%{opacity:0.4}
+      }
+      .mpop-time {
+        font-size: 0.6rem;
+        color: rgba(255,249,240,0.35);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.05rem;
+      }
+      .mpop-bubbles {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .mpop-bubble {
+        font-size: 0.63rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 12px;
+        max-width: 90%;
+        line-height: 1.4;
+        color: var(--cream);
+        animation: bubbleIn 0.3s ease both;
+      }
+      .mpop-bubble.out {
+        background: rgba(240,98,146,0.25);
+        border: 1px solid rgba(240,98,146,0.25);
+        align-self: flex-end;
+        border-bottom-right-radius: 3px;
+      }
+      .mpop-bubble.in {
+        background: rgba(114,239,221,0.15);
+        border: 1px solid rgba(114,239,221,0.2);
+        align-self: flex-start;
+        border-bottom-left-radius: 3px;
+      }
+      .mpop-bubble:nth-child(2) { animation-delay: 0.1s; }
+      .mpop-bubble:nth-child(3) { animation-delay: 0.2s; }
+      @keyframes bubbleIn {
+        from { opacity:0; transform: translateY(5px); }
+        to   { opacity:1; transform: translateY(0); }
+      }
+      .mpop-label {
+        text-align: center;
+        font-size: 0.65rem;
+        color: var(--rose);
+        padding: 0.5rem 0.5rem 0.6rem;
+        letter-spacing: 0.05rem;
+      }
+      .mpop-close {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: rgba(255,249,240,0.5);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        font-size: 0.6rem;
+        cursor: pointer;
+        margin-top: 0.4rem;
+        align-self: flex-start;
+        transition: background 0.2s;
+      }
+      .mpopover.right .mpop-close {
+        align-self: flex-end;
+      }
+      .mpop-close:hover {
+        background: rgba(240,98,146,0.2);
+        color: var(--rose);
+      }
+
       /* VEG FOOD */
       .fgrid {
         display: grid;
@@ -2008,28 +2174,144 @@
         <span class="l">India</span> meets <span class="a">USA</span> — same
         call, <em class="p">always</em>
       </h2>
-      <div class="dw">
-        <div class="dcard">
-          <span class="fl">🇮🇳</span>
-          <div class="cn">India</div>
-          <div class="cp">Varsha · Jellyfish 🪼</div>
+      <!-- WORLD MAP CONNECTION -->
+      <div class="mapwrap">
+        <svg id="worldmap" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-label="World map showing connection between India and USA">
+          <!-- Ocean background -->
+          <rect width="1000" height="500" fill="rgba(114,239,221,0.04)" rx="20"/>
+
+          <!-- Simplified world continents -->
+          <!-- North America -->
+          <path d="M95,60 L180,55 L220,70 L240,90 L250,120 L245,150 L235,170 L220,185 L200,195 L180,210 L160,230 L145,260 L130,275 L110,270 L90,255 L75,230 L65,200 L60,170 L55,140 L58,110 L70,80 Z" fill="rgba(114,239,221,0.15)" stroke="rgba(114,239,221,0.3)" stroke-width="1.2"/>
+          <!-- Greenland -->
+          <path d="M215,30 L240,25 L255,35 L250,55 L230,60 L215,50 Z" fill="rgba(114,239,221,0.1)" stroke="rgba(114,239,221,0.2)" stroke-width="1"/>
+          <!-- Central America nub -->
+          <path d="M145,260 L155,280 L148,300 L135,290 L130,275 Z" fill="rgba(114,239,221,0.12)" stroke="rgba(114,239,221,0.25)" stroke-width="1"/>
+          <!-- South America -->
+          <path d="M160,295 L195,285 L220,300 L235,330 L240,370 L230,410 L210,440 L190,455 L170,445 L155,420 L148,390 L145,355 L148,320 Z" fill="rgba(114,239,221,0.12)" stroke="rgba(114,239,221,0.25)" stroke-width="1"/>
+          <!-- Europe -->
+          <path d="M430,55 L475,48 L495,60 L500,80 L490,100 L475,110 L455,115 L435,105 L420,90 L418,72 Z" fill="rgba(240,98,146,0.1)" stroke="rgba(240,98,146,0.25)" stroke-width="1"/>
+          <!-- Scandinavia -->
+          <path d="M450,30 L462,20 L475,25 L478,42 L465,50 L452,48 Z" fill="rgba(240,98,146,0.08)" stroke="rgba(240,98,146,0.2)" stroke-width="1"/>
+          <!-- Africa -->
+          <path d="M430,120 L475,115 L510,130 L525,160 L530,200 L525,250 L510,300 L490,340 L465,365 L440,370 L415,355 L400,320 L395,280 L395,240 L400,200 L405,160 L415,135 Z" fill="rgba(249,199,79,0.1)" stroke="rgba(249,199,79,0.22)" stroke-width="1"/>
+          <!-- Middle East -->
+          <path d="M500,110 L540,105 L560,120 L555,150 L530,160 L510,155 L498,138 Z" fill="rgba(249,199,79,0.08)" stroke="rgba(249,199,79,0.18)" stroke-width="1"/>
+          <!-- Russia / North Asia -->
+          <path d="M500,30 L600,20 L700,28 L770,40 L800,55 L790,80 L750,90 L700,85 L650,90 L600,88 L555,85 L520,78 L500,65 Z" fill="rgba(224,195,252,0.1)" stroke="rgba(224,195,252,0.2)" stroke-width="1"/>
+          <!-- India / South Asia - highlighted -->
+          <path d="M590,140 L630,135 L655,148 L665,175 L660,210 L645,240 L625,260 L608,265 L592,252 L578,225 L572,195 L575,165 Z" fill="rgba(249,199,79,0.22)" stroke="rgba(249,199,79,0.5)" stroke-width="1.5" id="india-shape"/>
+          <!-- Southeast Asia -->
+          <path d="M665,175 L710,165 L730,180 L725,210 L705,225 L685,220 L665,210 Z" fill="rgba(224,195,252,0.1)" stroke="rgba(224,195,252,0.2)" stroke-width="1"/>
+          <!-- China / East Asia -->
+          <path d="M655,90 L730,82 L775,90 L800,110 L795,145 L770,165 L730,170 L690,160 L655,148 L640,125 L645,100 Z" fill="rgba(224,195,252,0.1)" stroke="rgba(224,195,252,0.2)" stroke-width="1"/>
+          <!-- Japan -->
+          <path d="M800,100 L815,95 L825,108 L820,125 L808,128 L798,118 Z" fill="rgba(224,195,252,0.08)" stroke="rgba(224,195,252,0.2)" stroke-width="1"/>
+          <!-- Australia -->
+          <path d="M720,310 L790,300 L840,315 L860,350 L855,395 L830,420 L790,430 L750,425 L720,405 L705,370 L705,335 Z" fill="rgba(114,239,221,0.1)" stroke="rgba(114,239,221,0.22)" stroke-width="1"/>
+          <!-- UK / Ireland -->
+          <path d="M415,58 L425,52 L428,65 L420,72 L413,67 Z" fill="rgba(240,98,146,0.1)" stroke="rgba(240,98,146,0.25)" stroke-width="1"/>
+
+          <!-- ── ANIMATED CONNECTION ARC ── -->
+          <!-- Shadow arc -->
+          <path id="arcShadow" d="M 618,198 Q 390,-60 145,200" fill="none" stroke="rgba(240,98,146,0.08)" stroke-width="6" stroke-linecap="round"/>
+          <!-- Main glowing arc -->
+          <path id="arc" d="M 618,198 Q 390,-60 145,200" fill="none" stroke="url(#arcGrad)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 5"/>
+          <!-- Animated travel dot -->
+          <circle r="5" fill="#f9c74f" filter="url(#glow)">
+            <animateMotion dur="3.5s" repeatCount="indefinite" keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline">
+              <mpath href="#arc"/>
+            </animateMotion>
+          </circle>
+          <!-- Second dot going other way -->
+          <circle r="3.5" fill="#72efdd" filter="url(#glow2)" opacity="0.8">
+            <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.75s" keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" calcMode="spline">
+              <mpath href="#arc"/>
+            </animateMotion>
+          </circle>
+
+          <!-- India PIN -->
+          <g id="indiaPin" style="cursor:pointer" onclick="togglePopover('indiaPopover')">
+            <circle cx="618" cy="198" r="14" fill="rgba(249,199,79,0.2)" stroke="rgba(249,199,79,0.6)" stroke-width="1.5">
+              <animate attributeName="r" values="14;20;14" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="618" cy="198" r="8" fill="#f9c74f" filter="url(#glow)"/>
+            <text x="618" y="202" text-anchor="middle" font-size="8" fill="#1a0828" font-weight="bold">🇮🇳</text>
+          </g>
+
+          <!-- USA PIN -->
+          <g id="usaPin" style="cursor:pointer" onclick="togglePopover('usaPopover')">
+            <circle cx="145" cy="200" r="14" fill="rgba(114,239,221,0.2)" stroke="rgba(114,239,221,0.6)" stroke-width="1.5">
+              <animate attributeName="r" values="14;20;14" dur="2s" begin="1s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.3;1" dur="2s" begin="1s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="145" cy="200" r="8" fill="#72efdd" filter="url(#glow2)"/>
+            <text x="145" y="204" text-anchor="middle" font-size="8" fill="#1a0828" font-weight="bold">🇺🇸</text>
+          </g>
+
+          <!-- Filters & gradients -->
+          <defs>
+            <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#72efdd"/>
+              <stop offset="50%" stop-color="#f4a4bf"/>
+              <stop offset="100%" stop-color="#f9c74f"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+        </svg>
+
+        <!-- India Popover -->
+        <div class="mpopover" id="indiaPopover">
+          <div class="mpop-phone">
+            <div class="mpop-screen">
+              <div class="mpop-call-ui">
+                <div class="mpop-avatar">🪼</div>
+                <div class="mpop-name">Varsha</div>
+                <div class="mpop-status calling">● Calling Ammu…</div>
+                <div class="mpop-time">12:34 AM · India</div>
+                <div class="mpop-bubbles">
+                  <div class="mpop-bubble out">Did you eat? 🥹</div>
+                  <div class="mpop-bubble in">yes maa 😭😂</div>
+                  <div class="mpop-bubble out">ok good. now tell me everything</div>
+                </div>
+              </div>
+            </div>
+            <div class="mpop-label">🇮🇳 Varsha · Jellyfish 🪼</div>
+          </div>
+          <button class="mpop-close" onclick="togglePopover('indiaPopover')">✕</button>
         </div>
-        <div class="darr">
-          ✈️<br /><small
-            style="
-              font-size: 0.65rem;
-              opacity: 0.35;
-              letter-spacing: 0.1rem;
-              text-transform: uppercase;
-            "
-            >always</small
-          >
+
+        <!-- USA Popover -->
+        <div class="mpopover right" id="usaPopover">
+          <div class="mpop-phone">
+            <div class="mpop-screen">
+              <div class="mpop-call-ui">
+                <div class="mpop-avatar">🌸</div>
+                <div class="mpop-name">Ammu</div>
+                <div class="mpop-status">● On a call 💕</div>
+                <div class="mpop-time">3:04 PM · USA</div>
+                <div class="mpop-bubbles">
+                  <div class="mpop-bubble in">I miss you so much 🥺</div>
+                  <div class="mpop-bubble out">same same same 🪼💛</div>
+                  <div class="mpop-bubble in">ok let's watch something tonight</div>
+                </div>
+              </div>
+            </div>
+            <div class="mpop-label">🇺🇸 Ammu · Shreya 🌸</div>
+          </div>
+          <button class="mpop-close" onclick="togglePopover('usaPopover')">✕</button>
         </div>
-        <div class="dcard">
-          <span class="fl">🇺🇸</span>
-          <div class="cn">USA</div>
-          <div class="cp">Ammu · Shreya 🌸</div>
-        </div>
+
+        <!-- Map label -->
+        <div class="map-caption">tap the pins 📍 to peek inside the call</div>
       </div>
       <div class="dpill">
         Different time zones. Same movies. Same gossip. Varsha queuing a
@@ -2694,6 +2976,21 @@
             setTimeout(() => (btn.innerHTML = o), 2500);
           });
       }
+      /* MAP POPOVERS */
+      function togglePopover(id) {
+        const el = document.getElementById(id);
+        const isOpen = el.classList.contains('open');
+        // close all
+        document.querySelectorAll('.mpopover').forEach(p => p.classList.remove('open'));
+        if (!isOpen) el.classList.add('open');
+      }
+      // Close popovers on outside click
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.mpopover') && !e.target.closest('#indiaPin') && !e.target.closest('#usaPin')) {
+          document.querySelectorAll('.mpopover').forEach(p => p.classList.remove('open'));
+        }
+      });
+
       /* POPUP INIT */
       (function initMusicPopup() {
         const overlay = document.getElementById('musicPopup');
